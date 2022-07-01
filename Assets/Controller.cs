@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
         _rb.AddForce(movement * Speed);
     }
     void Update()
+        //פצגמנעפכצגעכפצגעטכמפנטגמפצטגמכפצטגכמפצנטגמכ
     {
         
     }
