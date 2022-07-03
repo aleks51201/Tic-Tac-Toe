@@ -5,6 +5,19 @@ using UnityEngine;
 public class WinnerCounter : MonoBehaviour
 {
     public GameObject GameManage;
+    private int WinCount;
+    private void Awake()
+    {
+        if (DataHolder.FieldSize == 100)
+        {
+            WinCount = 5;
+        }
+        else
+        {
+            WinCount = 3;
+        }
+
+    }
     Vector2[] Sides = new[] { 
             new Vector2(-1, 0), 
             new Vector2(-1, 1), 
@@ -24,7 +37,7 @@ public class WinnerCounter : MonoBehaviour
             if (Shout == true)
             {
                  steps = CheckChein(TileTag, CheckCoordinates, Sides[i]);
-                if (steps >= 5)
+                if (steps >= WinCount)
                 {
                     GameManage.GetComponent<GameManage>().IsGameOn(true);
                 }

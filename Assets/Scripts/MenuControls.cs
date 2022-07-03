@@ -20,6 +20,12 @@ public class MenuControls : MonoBehaviour
     }
     public void HardModeChoosen()
     {
+        DataHolder.FieldSize = 100;
+        SceneManager.LoadScene("GameScene");
+    }
+    public void EasyModeChoosen()
+    {
+        DataHolder.FieldSize = 3;
         SceneManager.LoadScene("GameScene");
     }
     public void ExitPressed()

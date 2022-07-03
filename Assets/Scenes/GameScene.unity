@@ -226,6 +226,7 @@ MonoBehaviour:
   rows: 50
   columns: 50
   Tile: {fileID: 8763374332329786191, guid: 9815c55f062ae0049a903f9383982fbd, type: 3}
+  DataHolder: {fileID: 1238504027}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,6 +66,7 @@ public class GameManage : MonoBehaviour
         if (action == true)
         {
             GameON = false;
+            Turn = null;
             SceneManager.LoadScene("GameScene");
         }
         return GameON;

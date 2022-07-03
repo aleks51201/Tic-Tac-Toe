@@ -13,11 +13,12 @@ public class FieldGenerator : MonoBehaviour
     private Transform Field;
 
 
-
     //Clears our list gridPositions and prepares it to generate a new board.
 
     void GenerateField()
     {
+        columns = DataHolder.FieldSize;
+        rows = DataHolder.FieldSize;
         //Instantiate Board and set boardHolder to its transform.
         Field = new GameObject("Field").transform;
 
