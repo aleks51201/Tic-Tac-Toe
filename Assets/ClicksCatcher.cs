@@ -28,13 +28,17 @@ public class ClicksCatcher : MonoBehaviour
                 {
                     Hit.transform.GetComponent<SpriteRenderer>().color = Color.blue;
                     Hit.transform.tag = "TileZero";
-                    Hit.transform.GetComponent<TileCheckUp>().check();
+                    Vector2 HitPos = Hit.transform.position;
+                    /*Hit.transform.GetComponent<TileCheckUp>().check();*/
+                    GameManage.GetComponent<WinnerCounter>().DoTheCount("TileZero", HitPos);
                 }
                 else
                 {
                     Hit.transform.GetComponent<SpriteRenderer>().color = Color.red;
                     Hit.transform.tag = "TileCross";
-                    Hit.transform.GetComponent<TileCheckUp>().check();
+                    Vector2 HitPos = Hit.transform.position;
+                    /*Hit.transform.GetComponent<TileCheckUp>().check();*/
+                    GameManage.GetComponent<WinnerCounter>().DoTheCount("TileCross", HitPos);
                 }
             } 
         }
