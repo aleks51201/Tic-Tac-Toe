@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class WinnerCounter : MonoBehaviour
 {
+    private int PassedTurns = 0;
+
     public GameObject GameManage;
-    private int WinCount;
+    private int WinCount,TilesCount = 0;
     private void Awake()
     {
         if (DataHolder.FieldSize == 100)
         {
             WinCount = 5;
+            TilesCount = DataHolder.FieldSize * DataHolder.FieldSize;
         }
         else
         {
             WinCount = 3;
+            TilesCount = DataHolder.FieldSize * DataHolder.FieldSize;
         }
 
     }
@@ -30,6 +34,7 @@ public class WinnerCounter : MonoBehaviour
     public void DoTheCount(string TileTag, Vector2 TileCoordinates)
     {
         int steps;
+        PassedTurns += 1;
         for (int i = 0; i < 8; i++)
         {
             Vector2 CheckCoordinates = TileCoordinates + Sides[i];
@@ -39,12 +44,19 @@ public class WinnerCounter : MonoBehaviour
                  steps = CheckChein(TileTag, CheckCoordinates, Sides[i]);
                 if (steps >= WinCount)
                 {
-                    GameManage.GetComponent<GameManage>().IsGameOn(true);
+                    GameManage.GetComponent<GameManage>().IsGameOn(true, TileTag);
                 }
                 Debug.Log(steps);
             }
             
+
         }
+        bool GameON = GameManage.GetComponent<GameManage>().IsGameOn(false, "");
+        if (PassedTurns >= TilesCount && GameON == true)
+        {
+            GameManage.GetComponent<GameManage>().IsGameOn(true, "Draw");
+        }
+
     }
     public bool CheckStep(string TileTag, Vector2 TileCoordinates) //check the tile on the given coordinates if it match the given Tag
     {

@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class GameManage : MonoBehaviour
 {
     private string Turn = null;
     private bool GameON = true;
+    public GameObject GameEndUI;
+    public GameObject GameOnUI;
+    public TextMeshProUGUI WinnerText;
+
     public string GetFirstTurn()
     {
         int randomValue = Random.Range(0, 2);
@@ -49,26 +55,44 @@ public class GameManage : MonoBehaviour
         }
     }
 
-        // Start is called before the first frame update
+        
         void Start()
     {
         GetTurn();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
 
-    public bool IsGameOn(bool action)
+    public bool IsGameOn(bool action, string Winner)
     {
         if (action == true)
         {
             GameON = false;
             Turn = null;
-            SceneManager.LoadScene("GameScene");
+            ShowEndGameUI(Winner);
         }
         return GameON;
+    }
+
+    public void ShowEndGameUI(string Winner)
+    {
+        if(Winner == "TileCross")
+        {
+            WinnerText.text = "Cross Wins!";
+        }
+        else if(Winner == "TileZero")
+        {
+            WinnerText.text = "Zero Wins!";
+        }
+        else if (Winner == "Draw")
+        {
+            WinnerText.text = "That`s a Draw!";
+        }
+        GameEndUI.SetActive(true);
+        GameOnUI.SetActive(false);
     }
 }
