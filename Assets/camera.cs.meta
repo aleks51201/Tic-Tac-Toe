@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:Assets/Controller.cs.meta
-guid: db89c74774a41954794f10afb3fc0fba
-=======
-guid: 857a11187c8385c4e85953ceb3581d18
->>>>>>> Stashed changes:Assets/GameField.cs.meta
+guid: eb7030d97ca588c49b2621611f6a90ed
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
