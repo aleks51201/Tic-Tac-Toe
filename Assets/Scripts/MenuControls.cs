@@ -18,14 +18,22 @@ public class MenuControls : MonoBehaviour
         MainMenu.SetActive(true);
         ChooseScreen.SetActive(false);
     }
+    public void ExtraModeChoosen()
+    {
+        DataHolder.FieldSize = 100;
+        DataHolder.Gamemode = "Extra";
+        SceneManager.LoadScene("GameScene");
+    }
     public void HardModeChoosen()
     {
         DataHolder.FieldSize = 100;
+        DataHolder.Gamemode = "classic";
         SceneManager.LoadScene("GameScene");
     }
     public void EasyModeChoosen()
     {
         DataHolder.FieldSize = 3;
+        DataHolder.Gamemode = "classic";
         SceneManager.LoadScene("GameScene");
     }
     public void ExitPressed()

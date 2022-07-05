@@ -13,18 +13,22 @@ public class GameManage : MonoBehaviour
     public GameObject GameEndUI;
     public GameObject GameOnUI;
     public TextMeshProUGUI WinnerText;
+    public TextMeshProUGUI InfoPanelTurn;
+
 
     public string GetFirstTurn()
     {
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
         {
-            string Turn = "zero";
+            Turn = "zero";
+            InfoPanelTurn.text = "Cross";
             return Turn;
         }
         else
         {
-            string Turn = "cross";
+            Turn = "cross";
+            InfoPanelTurn.text = "Zero";
             return Turn;
         }
     }
@@ -64,7 +68,6 @@ public class GameManage : MonoBehaviour
     
     void Update()
     {
-        
     }
 
     public bool IsGameOn(bool action, string Winner)

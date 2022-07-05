@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ClicksCatcher : MonoBehaviour
 {
     public Camera Cam;
     public GameObject GameManage;
+    public TextMeshProUGUI InfoPanelTurn;
     public GameObject[] sprites = new GameObject[2];
 
 
@@ -19,8 +21,16 @@ public class ClicksCatcher : MonoBehaviour
     void Update()
     {
         bool GameON = GameManage.GetComponent<GameManage>().IsGameOn(false, "");
-        if (Input.GetMouseButtonDown(0) && GameON == true)
+        if (Input.GetMouseButtonDown(0) && GameON == true && !EventSystem.current.IsPointerOverGameObject(0))
         {
+/*                private bool IsPointerOverUIObject()
+            {
+                PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+                eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+                return results.Count > 0;
+            }*/
             RaycastHit2D Hit = new RaycastHit2D();
             Hit = Physics2D.Raycast(Cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (Hit.transform.tag == "Tile")
@@ -35,6 +45,7 @@ public class ClicksCatcher : MonoBehaviour
                     Vector2 HitPos = Hit.transform.position;
                     /*Hit.transform.GetComponent<TileCheckUp>().check();*/
                     GameManage.GetComponent<WinnerCounter>().DoTheCount("TileZero", HitPos);
+                    InfoPanelTurn.text = "Cross";
                 }
                 else
                 {
@@ -45,6 +56,7 @@ public class ClicksCatcher : MonoBehaviour
                     Vector2 HitPos = Hit.transform.position;
                     /*Hit.transform.GetComponent<TileCheckUp>().check();*/
                     GameManage.GetComponent<WinnerCounter>().DoTheCount("TileCross", HitPos);
+                    InfoPanelTurn.text = "Zero";
                 }
             } 
         }

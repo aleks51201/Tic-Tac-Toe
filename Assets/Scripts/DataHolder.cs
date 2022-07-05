@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class DataHolder
 {
-    public static int FieldSize;
+    public static int FieldSize = 10;
+    public static string Gamemode = "classic";
 }
