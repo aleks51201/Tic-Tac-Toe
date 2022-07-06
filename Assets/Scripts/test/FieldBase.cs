@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Field : MonoBehaviour,IField
+public  abstract class FieldBase : MonoBehaviour,IField
 {
     public void Create()
     {
