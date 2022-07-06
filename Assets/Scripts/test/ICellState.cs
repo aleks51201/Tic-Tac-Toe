@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IField 
+public interface ICellState
 {
-    void CreateField();
+    void Enter();
+    void Exit();
+    void Update();
 }

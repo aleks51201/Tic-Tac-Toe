@@ -7,21 +7,29 @@ public class InputConrol : MonoBehaviour
 {
     public GameObject gfield;
 
-    private IField fieldConrolObject;
+    private Cell fieldConrolObject;
 
     private void Start()
     {
-        fieldConrolObject = gfield.GetComponent<IField>();
+        fieldConrolObject = gfield.GetComponent<Cell>();
 
         if (fieldConrolObject == null)
-            throw new NullReferenceException("gfild does not have IFild interface") ;
+            throw new NullReferenceException("gfild does not have ICellState interface") ;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            fieldConrolObject.CreateField();
+            this.fieldConrolObject.SetStateZero();
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            this.fieldConrolObject.SetStateEmpty();
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            this.fieldConrolObject.SetStateCross();
         }
     }
 }
